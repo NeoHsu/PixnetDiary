@@ -56,7 +56,7 @@
 		android:padding="5dp" >
 
 		<TextView
-			android:id="@+id/mDate"
+			android:id="@+id/mTitle"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:ellipsize="end"
@@ -67,7 +67,7 @@
 			android:textColor="#F66C79" />
 
 		<TextView
-			android:id="@+id/mTime"
+			android:id="@+id/mDesc"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:ellipsize="end"
@@ -78,7 +78,7 @@
 			android:textSize="12sp" />
 
 		<TextView
-			android:id="@+id/Button1"
+			android:id="@+id/mButton"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_gravity="right"

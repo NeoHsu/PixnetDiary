@@ -6,6 +6,7 @@
 package tw.neo.pixnet.diary.ui;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -53,12 +54,6 @@ public class MainActivity extends BaseActivity {
         }
         BaseCustomAdapter adapter = new BaseCustomAdapter(mCtx, rowItems);
         listView.setAdapter(adapter);
-        listView.setOnItemClickListener(new OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-            }
-        });
     }
 
     public void onResume() {

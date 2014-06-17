@@ -11,6 +11,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import tw.neo.pixnet.diary.R;
 import tw.neo.pixnet.diary.util.LogsManagement;
 import tw.neo.pixnet.diary.util.SharedPreferencesManagement;
 
@@ -47,10 +48,19 @@ public class BaseActivity extends ActionBarActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         Log.d(TAG, "onOptionsItemSelected");
         switch (item.getItemId()) {
+            case android.R.id.home:
+                this.finish();
+                overridePendingTransition(R.anim.in_from_left, R.anim.out_to_right);
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
 
+    @Override
+    public void onBackPressed() {
+        this.finish();
+        overridePendingTransition(R.anim.in_from_left, R.anim.out_to_right);
     }
 
 }
