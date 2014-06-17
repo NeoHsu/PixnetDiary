@@ -7,19 +7,29 @@ package tw.neo.pixnet.diary.util;
 
 public class BaseRowItem {
     private String title;
-    private String desc;
+    private String timestamp;
+    private String id;
 
-    public BaseRowItem(String title, String desc) {
+    public BaseRowItem(String title, String timestamp, String id) {
         this.title = title;
-        this.desc = desc;
+        this.timestamp = timestamp;
+        this.id = id;
     }
 
-    public String getDesc() {
-        return desc;
+    public String getID() {
+        return id;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setID(String id) {
+        this.id = id;
+    }
+
+    public String getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(String timestamp) {
+        this.timestamp = timestamp;
     }
 
     public String getTitle() {
@@ -32,6 +42,6 @@ public class BaseRowItem {
 
     @Override
     public String toString() {
-        return title + "\n" + desc;
+        return title + "\n" + timestamp + "\n" + id;
     }
 }

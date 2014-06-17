@@ -23,4 +23,13 @@ public class SharedPreferencesManagement {
         this.mSP = this.mCtx.getSharedPreferences(SP_TAG, SP_MODE);
         this.mPE = this.mSP.edit();
     }
+
+    public void setAccessToken(String accessToken) {
+        mPE.putString("ACCESS_TOKEN", accessToken.toString());
+        mPE.commit();
+    }
+    
+    public String getAccessToken() {
+        return  mSP.getString("ACCESS_TOKEN", "null");
+    }
 }

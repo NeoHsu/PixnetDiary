@@ -8,6 +8,7 @@ package tw.neo.pixnet.diary.ui;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -19,6 +20,8 @@ import tw.neo.pixnet.diary.R;
 import tw.neo.pixnet.diary.util.BaseRowItem;
 import tw.neo.pixnet.diary.util.LogsManagement;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 public class BaseCustomAdapter extends BaseAdapter {
@@ -26,6 +29,7 @@ public class BaseCustomAdapter extends BaseAdapter {
     private static final LogsManagement Log = new LogsManagement();
     Context mCtx;
     List<BaseRowItem> rowItems;
+    BaseRowItem rowItem;
 
     public BaseCustomAdapter(Context context, List<BaseRowItem> items) {
         Log.d(TAG, "Init");
@@ -77,15 +81,29 @@ public class BaseCustomAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        BaseRowItem rowItem = (BaseRowItem) getItem(position);
+        rowItem = (BaseRowItem) getItem(position);
+
+        SimpleDateFormat timeFormat = new SimpleDateFormat("a h:mm");
+        long timestamp = Long.parseLong(rowItem.getTimestamp()) * 1000;
+        holder.mTime.setText(timeFormat.format(timestamp));
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("MMMd");
+        timestamp = Long.parseLong(rowItem.getTimestamp()) * 1000;
+        holder.mDate.setText(dateFormat.format(timestamp));
+
+        holder.mTitle.setText(rowItem.getTitle());
 
         holder.mButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
+                Bundle bundle = new Bundle();
+                bundle.putString("ID", rowItem.getID().toString());
+                intent.putExtras(bundle);
                 intent.setClass(mCtx, DetailActivity.class);
                 mCtx.startActivity(intent);
-                ((Activity) mCtx).overridePendingTransition(R.anim.in_from_right, R.anim.out_to_left);
+                ((Activity) mCtx).overridePendingTransition(R.anim.in_from_right,
+                        R.anim.out_to_left);
             }
         });
 
